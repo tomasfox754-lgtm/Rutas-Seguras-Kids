@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rutas Seguras Kids - Panel de Control Escolar</title>
+    <meta name="description" content="Sistema para la gestión de rutas escolares y asignación de estudiantes de Rutas Seguras Kids.">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <header>
+            <div class="header-title-area">
+                <h1>🚌 Rutas Seguras Kids</h1>
+                <p>Gestión y optimización en tiempo real de rutas escolares y estudiantes asignados</p>
+            </div>
+            
+            <div class="weather-widget" id="weather-widget-container">
+                <div class="weather-header">
+                    <h3>Clima Operativo</h3>
+                    <select id="weather-city-select" class="weather-select" aria-label="Seleccionar ciudad">
+                        <option value="bogota" selected>Bogota</option>
+                        <option value="medellin">Medellin</option>
+                        <option value="cali">Cali</option>
+                        <option value="barranquilla">Barranquilla</option>
+                        <option value="bucaramanga">Bucaramanga</option>
+                    </select>
+                </div>
+                <div class="weather-info" id="weather-info-box">
+                    <span class="weather-loading" id="weather-loading-text">Cargando clima operativo...</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            
+            <section class="panel-form" aria-labelledby="form-title">
+                <h2 id="form-title">📝 Registrar Nueva Ruta</h2>
+                <form id="route-form" novalidate>
+                    <input type="hidden" id="route-id-input" value="">
+                    
+                    <div class="form-group">
+                        <label for="route-name">Nombre de la Ruta</label>
+                        <input type="text" 
+                               id="route-name" 
+                               class="form-control" 
+                               placeholder="Ej. Ruta Norte - Chía" 
+                               required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="route-driver">Nombre del Conductor</label>
+                        <input type="text" 
+                               id="route-driver" 
+                               class="form-control" 
+                               placeholder="Ej. Don Carlos Gomez
+                               required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="route-time">Hora de Salida</label>
+                        <input type="time" 
+                               id="route-time" 
+                               class="form-control" 
+                               required>
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="submit" id="btn-submit-route" class="btn btn-primary btn-block">Crear Ruta Escolar</button>
+                        <button type="button" id="btn-cancel-edit" class="btn btn-secondary" style="display: none;">Cancelar</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="routes-panel" aria-labelledby="routes-title">
+                <div class="panel-header">
+                    <h2 id="routes-title">Rutas de Transporte Activas</h2>
+                </div>
+                
+                <div class="routes-grid" id="routes-grid-container">
+                </div>
+
+
+                <div class="empty-state" id="empty-state-view">
+                    <span class="empty-state-icon">🚌</span>
+                    <h3>No hay rutas creadas</h3>
+                    <p>Usa el formulario de la izquierda para registrar la primera ruta escolar del dia.</p>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
