@@ -25,9 +25,8 @@ rutas-seguras-kids/
 ├── js/
 │   └── app.js               # Clima, Web Component y control de estado
 └── README.md                # Documentación del proyecto 
-```
 
----
+
 
 ## 🚀 Instrucciones de Ejecución
 
