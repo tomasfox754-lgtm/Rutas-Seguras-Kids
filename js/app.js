@@ -1,12 +1,4 @@
-/**
- * SCRIPT UNIFICADO - RUTAS SEGURAS KIDS (Con CRUD de Estudiantes)
- * Consolida el Clima, el Web Component y el Control del DOM con soporte completo
- * para estudiantes con atributos de Nombre, Edad, Grado e ID auto-generado, y su edición.
- */
 
-// ==========================================================================
-// 1. SERVICIO DE CLIMA (Open-Meteo API sin Keys)
-// ==========================================================================
 const CITIES = {
     bogota: { name: "Bogotá", lat: 4.6097, lon: -74.0817 },
     medellin: { name: "Medellín", lat: 6.2442, lon: -75.5812 },
@@ -36,9 +28,6 @@ async function fetchWeather(cityKey) {
     }
 }
 
-// ==========================================================================
-// 2. WEB COMPONENT: <route-card> (Shadow DOM & CRUD de Estudiantes)
-// ==========================================================================
 class RouteCard extends HTMLElement {
     constructor() {
         super();
@@ -144,7 +133,6 @@ class RouteCard extends HTMLElement {
 
             if (studentName && studentAge && studentGrade) {
                 if (existingId) {
-                    // Modo Edición Estudiante
                     this.dispatch('update-student', {
                         routeId: this.routeId,
                         studentId: existingId,
@@ -153,7 +141,7 @@ class RouteCard extends HTMLElement {
                         studentGrade
                     });
                 } else {
-                    // Modo Asignación (Creación) Estudiante
+
                     this.dispatch('add-student', {
                         routeId: this.routeId,
                         studentName,
@@ -202,12 +190,11 @@ class RouteCard extends HTMLElement {
                 </div>
             `;
             
-            // Eliminar Estudiante
+
             li.querySelector('.btn-remove').onclick = () => {
                 this.dispatch('delete-student', { routeId: this.routeId, studentId: s.id });
             };
 
-            // Cargar datos en el sub-formulario para Editar Estudiante
             li.querySelector('.btn-edit-stud').onclick = () => {
                 const shadow = this.shadowRoot;
                 shadow.querySelector('#student-id-input').value = s.id;
@@ -225,9 +212,6 @@ class RouteCard extends HTMLElement {
 }
 customElements.define('route-card', RouteCard);
 
-// ==========================================================================
-// 3. ORQUESTADOR DE APLICACIÓN Y CONTROL DE ESTADO
-// ==========================================================================
 let routes = JSON.parse(localStorage.getItem('rutas_seguras_data')) || [
     {
         id: 'r1',
